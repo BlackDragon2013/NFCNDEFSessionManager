@@ -13,7 +13,7 @@ import CoreNFC
  */
 public class NFCNDEFSessionManager: NSObject {
     
-    var delegate: NFCNDEFSessionManagerDelegate?
+    public var delegate: NFCNDEFSessionManagerDelegate?
     fileprivate var messages: [String: String] = [:]
     fileprivate var session: NFCNDEFReaderSession?
     fileprivate var ndefMessage: NFCNDEFMessage?
