@@ -35,7 +35,7 @@ public class NFCNDEFSessionManager: NSObject {
      
      - Throws: Error when trying to create a `NFCNDEFMessage`
      */
-    func write(data: [String], alertMessage: String = "") throws {
+    public func write(data: [String], alertMessage: String = "") throws {
         nfcAction = .write
         ndefMessage = try configureNDEFMessage(data: data)
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
@@ -56,7 +56,7 @@ public class NFCNDEFSessionManager: NSObject {
      
      - Throws: Error when trying to create a `NFCNDEFMessage`
      */
-    func write<T: Codable>(data: [T], alertMessage: String = "") throws {
+    public func write<T: Codable>(data: [T], alertMessage: String = "") throws {
         nfcAction = .write
         ndefMessage = try configureNDEFMessage(data: data)
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
@@ -72,7 +72,7 @@ public class NFCNDEFSessionManager: NSObject {
      
      - Precondition: `alertMessage` has an empty `String` value by default
      */
-    func read(alertMessage: String = "") {
+    public func read(alertMessage: String = "") {
         nfcAction = .read
         session = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: false)
         session?.alertMessage = alertMessage
@@ -95,7 +95,7 @@ public class NFCNDEFSessionManager: NSObject {
      
      - Precondition: All parameters have `nil` value by default
      */
-    func setCustomMessages(noSupportedTag: String? = nil, readOnlyTag: String? = nil, noTagAvailable: String? = nil, multipleTags: String? = nil, writeSuccess: String? = nil, readSuccess: String? = nil, readNoPayload: String? = nil, connectError: String? = nil, unknownError: String? = nil) {
+    public func setCustomMessages(noSupportedTag: String? = nil, readOnlyTag: String? = nil, noTagAvailable: String? = nil, multipleTags: String? = nil, writeSuccess: String? = nil, readSuccess: String? = nil, readNoPayload: String? = nil, connectError: String? = nil, unknownError: String? = nil) {
         if let noSupportedTag = noSupportedTag {
             messages["notSupported"] = noSupportedTag
         }
